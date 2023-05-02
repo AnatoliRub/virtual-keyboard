@@ -18,11 +18,12 @@ body {
 
 .keyboard {
     display: flex;
+
     &-container {
         display: grid;
-        grid-template-columns: repeat(16, 4.8vW);
-        align-self: center;
+        grid-template-columns: repeat(16, 4.8vw);
         gap: 0.4vh;
+        align-self: center;
         height: 48vh;
         padding: 1vh;
         margin-top: 2vh;
@@ -58,35 +59,60 @@ body {
 .key {
     height: 8.8vh;
     padding: 10px;
+    overflow: hidden;
     color: white;
     background-color: navy;
+    border: none;
     border-radius: 1vh;
-    transition: 1s;
-    overflow: hidden;
+    outline: none;
+    transition: .5s;
 
     &-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        transition: 1s;
+        transition: .5s;
     }
 
     &-title {
         align-self: flex-end;
         font-size: 2.5vh;
-        transition: 1s;
+        transition: .5s;
     }
 
     &-subtitle {
         align-self: flex-start;
         font-size: 1.5vh;
-        transition: 1s;
+        transition: .5s;
     }
 }
 
+.key-func {
+    .key-title {
+        align-self: center;
+        font-size: 2vh;
+    }
+}
+
+.key-letter {
+    background-color: teal;
+}
+
+.key-number {
+    background-color: deeppink;
+}
+
+.key-punctual {
+    background-color: darkorchid;
+}
+
 .keyboard-container.rotate {
-    & .key__letter, .key__number, .key__punctual {
-        & .key-wrapper, .key-title, .key-subtitle {
+    & .key-letter,
+    .key-number,
+    .key-punctual {
+        & .key-wrapper,
+        .key-title,
+        .key-subtitle {
             transform: rotate(-180deg);
         }
 
@@ -94,38 +120,20 @@ body {
             &-title {
                 align-self: flex-end;
                 font-size: 1.5vh;
-                transition: 1s;
+                transition: .5s;
             }
 
             &-subtitle {
                 align-self: flex-start;
                 font-size: 2.5vh;
-                transition: 1s;
+                transition: .5s;
             }
         }
     }
 }
 
-.key__letter {
-    background-color: teal;
-}
-
-.key__number {
-    background-color: cyan;
-}
-
-.key__punctual {
-    background-color: darkorchid;
-}
-
-.key__func {
-    .key-title {
-        align-self: center;
-        font-size: 2vh;
-    }
-}
-
 .highlight {
     background-color: darkorchid;
-    transition: 1s;
+    transition: .5s;
+    transform: scale(0.9);
 }
