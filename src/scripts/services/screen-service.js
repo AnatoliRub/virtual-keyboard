@@ -146,8 +146,7 @@ Click here and start. ^.^,`,
             const currentSection = sections.reduce(
                 (acc, el, ind) => {
                     if (acc.col + el.length + ind < cursorPosition) {
-                        const col = acc.col + el.length;
-                        acc.col = col;
+                        acc.col += el.length;
                         acc.ind = ind;
                     }
                     return acc;
@@ -182,9 +181,7 @@ Click here and start. ^.^,`,
             const currentSection = sections.reduce(
                 (acc, el, ind) => {
                     if (acc.col + el.length + ind <= cursorPosition) {
-                        // console.log(ind);
-                        const col = acc.col + el.length;
-                        acc.col = col;
+                        acc.col += el.length;
                         acc.ind = ind + 1;
                     }
                     return acc;
