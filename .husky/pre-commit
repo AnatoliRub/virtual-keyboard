@@ -1,0 +1,31 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'building and checking your project before committing'
+
+# Check Build
+npm run build || (
+  echo 'You have troubles with build. Add changes and try commit again.'
+  false;
+)
+
+# Check Eslint
+npm run lint || (
+  echo 'You have troubles with eslint. Add changes and try commit again.'
+  false;
+)
+
+# Check Stylelint
+npm run stylelint || (
+  echo 'You have troubles with stylelint. Add changes and try commit again.'
+  false;
+)
+
+# Check Prettier
+npm run prettier || (
+  echo 'You have troubles with prettier. Add changes and try commit again.'
+  false;
+)
+
+
+
