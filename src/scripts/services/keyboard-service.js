@@ -13,18 +13,13 @@ class KeyboardService {
 
     keyupObserver = new EventObserver();
 
-    clickObserver = new EventObserver();
+    mouseDownObserver = new EventObserver();
 
-    isShifted = false;
-
-    isCapslock = false;
+    mouseUpObserver = new EventObserver();
 
     constructor() {
         this.languageService = languageService;
         this.keyLayer = this.LanguageLayer.map((keyInfo) => new Key(keyInfo));
-        this.keydownObserver.subscribe(this.highlightKey.bind(this));
-        this.keydownObserver.subscribe(this.rotateKeys.bind(this));
-        this.keyupObserver.subscribe(this.clearPrevVal.bind(this));
     }
 
     get LanguageLayer() {
@@ -34,46 +29,31 @@ class KeyboardService {
     toggleLayer() {
         this.languageService.toggleLanguage();
         const lang = this.LanguageLayer;
+
         this.keyLayer = this.keyLayer.map((key, ind) => {
             key.updateKey(lang[ind]);
             return key;
         });
     }
 
-    rotateKeys(e) {
-        if (
-            this.prevValue ||
-            this.prevValue === 'ShiftLeft' ||
-            this.prevValue === 'ShiftRight'
-        )
-            return;
-        if (e.code !== 'ShiftLeft' && e.code !== 'ShiftRight' && e.code !== 'CapsLock') return;
-        this.prevValue = e.code;
+    rotateKeys() {
         this.keyboard.classList.toggle('rotate');
     }
 
-    clearPrevVal() {
-        if (
-            !(this.prevValue === 'ShiftLeft' || this.prevValue === 'ShiftRight')
-        )
-            return;
-        this.prevValue = '';
-        this.keyboard.classList.toggle('rotate');
-    }
+    highlightKeyNew(code) {
+        const key = this.keyLayer.find((el) => el.code === code);
 
-    highlightKey(e) {
-        if(e.code === 'CapsLock') {
-            this.rotateKeys(e);
-            const key = this.keyLayer.find((el) => el.code === 'CapsLock');
-            key.highlightKey();
-            return;
+        if (key) {
+            setTimeout(() => key.highlightKey(), 0);
         }
+    }
 
-        const key = this.keyLayer.find((el) => el.code === e.code);
-        key.highlightKey();
-        setTimeout(() => {
-            key.highlightKey();
-        }, 500);
+    hideHighlightNew(code) {
+        const key = this.keyLayer.find((el) => el.code === code);
+
+        if (key) {
+            setTimeout(() => key.hideKey(), 0);
+        }
     }
 }
 

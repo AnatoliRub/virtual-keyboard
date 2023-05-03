@@ -18,8 +18,16 @@ class Keyboard {
             this.keyboardService.keyupObserver.broadcast(e);
         });
 
-        this.keyboard.addEventListener('click', (e) => {
-            this.keyboardService.clickObserver.broadcast(e);
+        this.keyboard.addEventListener('mousedown', (e) => {
+            this.keyboardService.mouseDownObserver.broadcast(e);
+        });
+
+        this.keyboard.addEventListener('mouseout', (e) => {
+            this.keyboardService.mouseUpObserver.broadcast(e);
+        });
+
+        this.keyboard.addEventListener('mouseup', (e) => {
+            this.keyboardService.mouseUpObserver.broadcast(e);
         });
     }
 
