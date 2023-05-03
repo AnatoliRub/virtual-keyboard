@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: cornflowerblue;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    margin: 5vh 2vw;
+    border-radius: 0.5vh;
+}
+
+.keyboard {
+    display: flex;
+
+    &-container {
+        display: grid;
+        grid-template-columns: repeat(16, 4.8vw);
+        gap: 0.4vh;
+        align-self: center;
+        height: 48vh;
+        padding: 1vh;
+        margin-top: 2vh;
+        background-color: antiquewhite;
+        border: 1px black solid;
+        border-radius: 0.5vh;
+    }
+
+    &-textarea {
+        height: 40vh;
+        padding: 1vh 1vw 0;
+        resize: none;
+        border: 1px black solid;
+        border-radius: 0.5vh;
+        outline: none;
+    }
+}
+
+.button {
+    &-md {
+        grid-column: span 2;
+    }
+
+    &-xl {
+        grid-column: span 3;
+    }
+
+    &-xxl {
+        grid-column: span 7;
+    }
+}
+
+.key {
+    height: 8.8vh;
+    padding: 10px;
+    overflow: hidden;
+    color: white;
+    background-color: navy;
+    border: none;
+    border-radius: 1vh;
+    outline: none;
+    transition: .5s;
+
+    &-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: .5s;
+    }
+
+    &-title {
+        align-self: flex-end;
+        font-size: 2.5vh;
+        transition: .5s;
+    }
+
+    &-subtitle {
+        align-self: flex-start;
+        font-size: 1.5vh;
+        transition: .5s;
+    }
+}
+
+.key-func {
+    .key-title {
+        align-self: center;
+        font-size: 2vh;
+    }
+}
+
+.key-letter {
+    background-color: teal;
+}
+
+.key-number {
+    background-color: deeppink;
+}
+
+.key-punctual {
+    background-color: darkorchid;
+}
+
+.keyboard-container.rotate {
+    & .key-letter,
+    .key-number,
+    .key-punctual {
+        & .key-wrapper,
+        .key-title,
+        .key-subtitle {
+            transform: rotate(-180deg);
+        }
+
+        .key {
+            &-title {
+                align-self: flex-end;
+                font-size: 1.5vh;
+                transition: .5s;
+            }
+
+            &-subtitle {
+                align-self: flex-start;
+                font-size: 2.5vh;
+                transition: .5s;
+            }
+        }
+    }
+}
+
+.highlight {
+    background-color: darkorchid;
+    transition: .5s;
+    transform: scale(0.9);
+}
