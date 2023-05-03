@@ -23,12 +23,17 @@ class Key {
     }
 
     highlightKey() {
-        this.key.classList.toggle('highlight');
+        this.key.classList.add('highlight');
+    }
+
+    hideKey() {
+        this.key.classList.remove('highlight');
     }
 
     createKey() {
         const subtitle = createEl('div', ['key-subtitle']);
         const title = createEl('div', ['key-title']);
+        title.setAttribute('data-code', this.code);
         const keyWrapper = createEl('div', ['key-wrapper']);
         this.key = createEl('button', ['key']);
 
@@ -46,7 +51,7 @@ class Key {
 
     setSpecialClasses() {
         if (this.code.match(/[0-9]/)) {
-            this.key.classList.add('key__number');
+            this.key.classList.add('key-number');
             return;
         }
 
@@ -55,11 +60,11 @@ class Key {
                 /Del|Backsp|Tab|Caps|ShiftL|ShiftR|Enter|Contr|Win|Alt|ArrowRight|ArrowLeft|ArrowDown|ArrowUp/
             )
         ) {
-            this.key.classList.add('key__func');
+            this.key.classList.add('key-func');
             return;
         }
 
-        this.key.classList.add('key__letter');
+        this.key.classList.add('key-letter');
     }
 
     setSizeButton() {

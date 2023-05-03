@@ -364,7 +364,7 @@ const en = [
     },
     {
         small: '7',
-        shift: '&amp;',
+        shift: '&',
         code: 'Digit7',
     },
     {
@@ -579,7 +579,7 @@ const en = [
     },
     {
         small: ',',
-        shift: '&lt;',
+        shift: '<',
         code: 'Comma',
     },
     {
